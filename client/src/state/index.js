@@ -15,8 +15,8 @@ export const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     setLogin: (state, action) => {
-      state.user = action.paylod.user;
-      state.token = action.paylod.token;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
     setLogout: (state) => {
       state.user = null;
@@ -24,21 +24,22 @@ export const authSlice = createSlice({
     },
     setFriends: (state, action) => {
       if (state.user) {
-        state.friends = action.paylod.friends;
+        state.user.friends = action.payload.friends;
       } else {
         console.error("User has no friends :/");
       }
     },
     setPosts: (state, action) => {
-      state.posts = action.paylod.posts;
+      state.posts = action.payload.posts;
     },
     setPost: (state, action) => {
-      const updatedPost = state.posts.map((post) => {
-        if (post._id === action.payload.post_id) {
-          return post;
+      const updatedPosts = state.posts.map((post) => {
+        if (post._id === action.payload.post._id) {
+          return action.payload.post;
         }
-        state.posts = updatedPost;
+        return post;
       });
+      state.posts = updatedPosts;
     },
   },
 });

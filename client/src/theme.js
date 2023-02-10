@@ -1,3 +1,4 @@
+// color design tokens export
 export const colorTokens = {
   grey: {
     0: "#FFFFFF",
@@ -28,7 +29,7 @@ export const colorTokens = {
   },
 };
 
-// material-ui theme settigs
+// mui theme settings
 export const themeSettings = (mode) => {
   return {
     palette: {
